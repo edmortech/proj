@@ -1,0 +1,253 @@
+.auth-container-page {
+    display: none; 
+    
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    background-color: #F5F5DC;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #161515;
+}
+
+.auth-container-page.active {
+    display: block; /* Show the container */
+}
+
+
+.auth-section {
+    display: none; /* Controlled by JS adding .active */
+    animation: fadeIn 0.4s ease-in-out;
+    
+}
+
+.auth-section.active {
+    display: block;
+}
+
+.auth-section h2 {
+    text-align: center;
+    color: black;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+.auth-section p {
+    text-align: center;
+    color: black;
+    margin-bottom: 30px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.auth-section .form-group {
+    margin-bottom: 5px;
+}
+
+.auth-section label {
+    display: block;
+    margin-bottom: 8px;
+    color: black;
+    font-weight: bold;
+    font-size: 0.95em;
+}
+
+.auth-section input[type="text"],
+.auth-section input[type="email"],
+.auth-section input[type="password"],
+.auth-section input[type="tel"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid white;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.auth-section input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.auth-section .auth-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.auth-section .auth-button:hover {
+    background-color: #0056b3;
+}
+
+.auth-section .error-message {
+    color: #dc3545;
+    font-size: 0.85em;
+    display: block;
+    margin-top: 5px;
+    min-height: 1em;
+}
+
+.auth-section .form-message {
+    text-align: center;
+    margin: 15px 0;
+    font-weight: bold;
+    min-height: 1.2em;
+    color: #28a745;
+}
+
+.auth-section .form-message.error { /* Add this class via JS for errors */
+    color: #dc3545; /* Error color */
+}
+
+
+.auth-section .form-switch {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+form-switch{
+    color: #000000;
+}
+
+.auth-section .form-switch a.route-link {
+    color: hsla(276, 75%, 42%, 0.829);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-section .form-switch a.route-link:hover {
+    text-decoration: underline;
+}
+
+/* Optional Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* General Overlay Style (if used by other popups) */
+#overlay {
+    display: none; /* Hidden by default */
+    z-index: 1000; /* Below popups, above content */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#overlay.active { /* JS can add .active if needed by other popups */
+    display: block;
+}
+.social-login-options {
+    margin: 25px 0; /* Add space around the social options block */
+    text-align: center;
+}
+
+/* Separator ("OR") Styling */
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #888;
+    margin: 20px 0; /* Space above and below the separator */
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ddd; /* Line color */
+}
+
+.separator span {
+    padding: 0 15px; /* Space around the "OR" text */
+}
+
+/* General Social Button Styling */
+.social-button {
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+    width: 100%; /* Make buttons full width */
+    padding: 10px 15px;
+    margin-bottom: 10px; /* Space between buttons */
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #fff; /* Default text color - overridden below */
+    border: 1px solid transparent; /* Base border */
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.social-button img {
+    width: 20px; /* Adjust icon size */
+    height: 20px;
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Google Button Specific Styling */
+.google-button {
+    background-color: #fff; /* Google's button background */
+    color: #444; /* Google's button text color */
+    border-color: #ccc;
+}
+
+.google-button:hover {
+    background-color: #c4c1c1e0;
+    border-color: #bbb;
+}
+
+/* Facebook Button Specific Styling */
+.facebook-button {
+    background-color: #1877F2; /* Facebook blue */
+    color: #fff;
+    border-color: #1877F2;
+}
+
+.facebook-button:hover {
+    background-color: #2e61a3;
+}
+
+.apple-button {
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text/icon */
+    border-color: #000000;
+    /* Apple recommends using the system font */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.apple-button:hover {
+    background-color: #333333; /* Slightly lighter black */
+}
+
+/* Ensure your white Apple logo SVG is used here */
+/* If using an icon font, set the color: #fff; */
+.apple-button img {
+      brightness(0) invert(1); 
+      
+}

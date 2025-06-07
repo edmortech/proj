@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="filter.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="dt.css">
+    <script src="shared.js" defer></script>
+    <script src="navbar.js" defer></script>
+    <script src="log-reg.js" type="module" defer></script>
+    <script type="module" src="dashboard.js"></script>
+    <script src="date.js" defer></script>
+    <script type="module" src="searchf.js"></script>
+    <script src="serveriip.js" defer></script>
+ 
+</head>
+
+<body>
+
+   <!-- project.html and dashboard.html -->
+<nav class="navbar">
+    <!-- Hamburger Icon -->
+    <button class="hamburger" aria-label="Toggle Navigation" onclick="toggleNavbar()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </button>
+    <div id="dashboard-content" style="padding-left: 60%; font-size: 0.55rem;">
+    </div>
+    <!-- Navbar Links - Content will be dynamically loaded here -->
+    <div class="navbar-links"></div>
+
+    <!-- Navbar Buttons - Content will be dynamically loaded here -->
+    <div class="navbar-buttons"></div>
+</nav>
+<main>
+<div id="overlay"></div>
+<div id="popup-overlay" class="popup-overlay"></div>
+
+
+<div id="profile-popup-overlay"></div>  <!-- The backdrop -->
+
+    <div id="profile-popup">
+        <button class="close-section-btn" id="closeProfileButton">×</button>
+        <div class="form-group">
+            <label for="profile-username">Username:</label>
+            <input type="text" id="profile-username" name="profile-username" readonly>
+        </div>
+        <div class="form-group">
+            <label for="profile-email">Email:</label>
+            <input type="email" id="profile-email" name="profile-email" readonly>
+        </div>
+        <div class="form-group">
+            <label for="profile-fullName">Full Name:</label>
+            <input type="text" id="profile-fullName" name="profile-fullName" disabled>
+        </div>
+        <div class="form-group">
+            <label for="profile-phoneNumber">Phone Number:</label>
+            <input type="tel" id="profile-phoneNumber" name="profile-phoneNumber" disabled>
+        </div>
+        <button id="editProfileButton">Edit Profile</button>
+    </div>
+
+<div class="dashboard">
+    
+
+    <div id="bookings-popup-overlay"></div>
+
+<div id="bookings-popup">
+    <button class="close-section-btn" id="closeBookingsButton">×</button>
+    <div id="bookings-content">
+        <!-- The booking table will be inserted here -->
+    </div>
+</div>
+
+<div id="payment-methods-popup-overlay"></div>
+<div id="payment-methods-popup" class="dashboard-section">
+    <button class="close-section-btn" id = "closePaymentMethodsButton" data-section="payment-methods-section">×</button>
+    <div id="payment-methods-list">
+    </div>
+    <div id="add-payment-method-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">×</span>
+            <form id="payment-method-form">
+                <label for="method-name">Method Name:</label>
+                <select id="method-name" name="method_name" required></select><br><br>
+                <label for="provider">Provider:</label>
+                <select id="provider" name="provider" required></select><br><br>
+                <label for="account-number">Account Number:</label>
+                <input type="text" id="account-number" name="account-number" required><br><br>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+    <div id="overlay" class="overlay"></div>
+    <button id="add-payment-method-btn">Add Payment Method</button>
+</div>
+</div>
+
+    <!-- This div is where the shared content will be injected -->
+    <div id="shared-content-container"></div>
+    
+    <div class="package-container">
+        <div class="package-option" data-package="hourly">Hourly</div>
+        <div class="package-option" data-package="monthly">Monthly</div>
+    </div>
+
+    <section class="searchbar">
+
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Where are you going?" autocomplete="off">
+            <div id="suggestion-box" class="suggestion-box"></div>
+        </div>
+
+        <!-- Date/Time Picker -->
+        <div class="datetime-container">
+            <label for="datetime-input" class="datetime-label">
+                <i class="calendar-icon"></i>
+                <span id="datetime-placeholder">When do you need to park?</span>
+                <i class="dropdown-icon"></i>
+            </label>
+            <div id="datetime-picker" class="datetime-picker">
+                <div class="datetime-picker-header">
+                    <button id="prev-month"><</button>
+                    <span id="current-month-year"></span>
+                    <button id="next-month">></button>
+                </div>
+                <div class="datetime-content">
+                    <div id="calendar" class="calendar">
+                        <!-- Calendar grid will be generated here -->
+                    </div>
+                    <!-- Custom Time Picker (Scrollable) -->
+                    <div class="time-inputs">
+                        <div class="time-input-group">
+                            <label for="enter-after">Enter After:</label>
+                            <div class="time-select">
+                                <input type="text" id="enter-after" class="time-input" readonly placeholder="Select Time">
+                                <div class="time-options" id="enter-after-options">
+                                    <!-- Time options will be generated here -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="time-input-group">
+                            <label for="exit-before">Exit Before:</label>
+                            <div class="time-select">
+                                <input type="text" id="exit-before" class="time-input" readonly placeholder="Select Time">
+                                <div class="time-options" id="exit-before-options">
+                                    <!-- Time options will be generated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="datetime-submit">Submit</button>
+            </div>
+            
+        </div>
+        <button id="find-parking-spot" class="find-parking-spot-button">Find Parking Spot</button>
+    </section>
+
+    
+    <div id="parkingSpotPopup" class="payment-method-popup" style="display: none;">
+        <h3>Available Parking Spots</h3>
+        <table id="parking-spots-table">
+            <thead>
+                <tr>
+                    <th>Lot No.</th>
+                    <th>Location</th>
+                    <th>Total Cost</th>
+                    <th>Parking Type</th>
+                    <th>
+                      <button id="filter-button" class="filter-button">
+                        <span class="filter-icon">☰</span> Filters
+                      </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Parking spots will be inserted dynamically -->
+            </tbody>
+        </table>
+        <button id="closeParkingPopup">Close</button>
+         <!-- Filter Popup -->
+        <div id="filterPopup" class="filter-popup" style="display: none;">
+            <div class="filter-popup-content">
+                <span class="filter-close-btn">×</span>
+                <label for="price-filter">Max Price:</label>
+                <input type="number" id="price-filter-popup" placeholder="Max Price">
+    
+                <label for="parking-type-filter">Parking Type:</label>
+                <select id="parking-type-filter-popup">
+                    <option value="">All</option>
+                    <option value="garage">Garage</option>
+                    <option value="lot">Lot</option>
+                    <option value="street">Street</option>
+                </select>
+                <button id="apply-filters" class="filter-apply-filters">Apply Filters</button>
+            </div>
+        </div>
+        <div id="overlay" class="filter-overlay" style="display: none;"></div>
+    </div>
+    <!-- Payment Method Popup -->
+    <div id="paymentMethodPopup" class="payment-method-popup"  >
+        <h3>Select Payment Method</h3>
+        <div id="paymentMethodsContainer" class="payment-methods">
+            <!-- Payment methods will be dynamically inserted here -->
+        </div>
+        <button id="closePaymentPopup">Close</button>
+    </div>
+
+    <!-- Overlay (for closing when clicking outside) -->
+    <div class="popup-overlay" id="paymentOverlay"></div>
+
+    <section id="how-it-works-section">
+    <h2>How Edpark Works</h2>
+    <p>Edpark is a smart parking system that simplifies finding and paying for parking.</p>
+  
+    <ol>
+      <li>
+        <strong>Find a spot:</strong> Use the app or website to see available spots in real-time, filtered by your preferences.
+      </li>
+      <li>
+        <strong>Reserve your space:</strong> Book your spot in advance and pay securely through the app.
+      </li>
+      <li>
+        <strong>Easy entry and exit:</strong> License plate recognition technology allows for seamless entry and exit.
+      </li>
+      <li>
+        <strong>Automated payments:</strong> Your parking session is tracked, and your payment method is automatically charged.
+      </li>
+      <li>
+        <strong>Smart features:</strong> Benefit from real-time availability, dynamic pricing, navigation, reminders, and a "find my car" feature.
+      </li>
+    </ol>
+  
+    <p>Edpark makes parking hassle-free, wherever you go.</p>
+  </section>
+</main>
+
+
+</body>
+<footer class="site-footer">
+    <div class="footer-container container">
+        <div class="footer-column about">
+            <h4>About Edpark</h4>
+            <!-- Optional: Add your logo here -->
+            <!-- <img src="system images/logo2.design.png" alt="Edpark Logo" class="footer-logo"> -->
+            <p>Simplifying your parking experience with smart, efficient, and user-friendly solutions. Find, reserve, and pay for parking seamlessly.</p>
+        </div>
+
+        <div class="footer-column links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#how-it-works-section">How It Works</a></li>
+                <li><a href="#">Find Parking</a></li>
+                <li><a href="#">My Account</a></li> <!-- Link to dashboard if logged in -->
+                <li><a href="#">Help & Support</a></li>
+            </ul>
+        </div>
+
+        
+        <div class="footer-column contact-info">
+            <h4>Contact Us</h4>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> 123 Parking Lane, Tech City</li>
+                <li><i class="fas fa-phone"></i> <a href="tel:+1234567890">+254 (112) 870-066</a></li>
+                <li><i class="fas fa-phone"></i> <a href="tel:+1234567890">+254 (752) 254-216</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:support@edpark.com">support@edpark.com</a></li> 
+                <li>
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/+254112870066" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+                </li>
+                <!-- === END OF ADDED LINE === -->
+            </ul>
+        </div>
+        <div class="footer-column social">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <!-- Optional: Newsletter Signup -->
+            <!--
+            <h4>Newsletter</h4>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
+            -->
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© <span id="current-year"></span> Edpark Parking Solutions. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+</footer>
+<!-- ========================= END FOOTER ========================= -->
+
+<!-- Add Font Awesome for Icons (Optional but recommended for icons used above) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<script>
+    // Simple script to update the year automatically
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+</html>

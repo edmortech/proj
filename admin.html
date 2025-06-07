@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <script type="module" src="admin2.js"></script>
+    <script src="" defer></script>
+</head>
+<body>
+    <nav class="container" >
+        <h1>Admin Panel</h1>
+        <button id="logoutBtn">Logout</button>
+    </nav>
+    
+    <div class="container">
+       
+    
+        <div class="grid-container">
+    
+          <div class="grid-item" id="userManagementSection" data-popup-id="userManagementPopup">
+            <h2>User Management</h2>
+          </div>
+    
+          <div class="grid-item" id="locationManagementSection" data-popup-id="locationManagementPopup">
+            <h2>Location Management</h2>
+          </div>
+    
+          <div class="grid-item" id="parkingSlotManagementSection" data-popup-id="parkingSlotManagementPopup">
+            <h2>Parking Slot Management</h2>
+          </div>
+    
+          <div class="grid-item" id="reservationManagementSection" data-popup-id="reservationManagementPopup">
+            <h2>Reservation Management</h2>
+          </div>
+    
+          <div class="grid-item" id="pricingManagementSection" data-popup-id="pricingManagementPopup">
+            <h2>Pricing Management</h2>
+          </div>
+    
+        </div>
+    
+      </div>
+    
+      <div id="userManagementPopup" class="popup">
+        <div class="popup-content">
+            <span class="close">×</span>
+            <h2>User Management</h2>
+            <div id="userTableContainer"></div>  <!-- Table will be rendered here -->
+        </div>
+    </div>
+      
+    <div id="locationManagementPopup" class="popup">
+      <div class="popup-content">
+          <span class="close">×</span>
+          <h2>Location Management</h2>
+          <button id="addLocationBtn">Add Location</button>
+          <div id="locationTableContainer"></div>
+          <div id="addLocationFormContainer"></div>
+      </div>
+  </div>
+    
+    <!-- Parking Slot Management Popup -->
+<div id="parkingSlotManagementPopup" class="popup">
+  <div class="popup-content">
+      <span class="close">×</span>
+      <h2>Parking Slot Management</h2>
+      <button id="addParkingSlotBtn">Add Parking Slot</button>
+      <div id="parkingSlotTableContainer"></div> <!-- Changed Here -->
+      <div id="addParkingSlotFormContainer"></div>
+  </div>
+</div>
+
+  <div id="reservationManagementPopup" class="popup">
+    <div class="popup-content">
+        <span class="close">×</span>
+        <h2>Reservation Management</h2>
+        <div id="reservationTableContainer"></div>
+    </div>
+</div>
+
+    <!-- Pricing Management Popup -->
+    <div id="pricingManagementPopup" class="popup">
+      <div class="popup-content">
+          <span class="close">×</span>
+          <h2>Pricing Management</h2>
+          <button id="addPriceBtn">Add Price</button> <!-- Add button -->
+          <div id="pricingTableContainer"></div>
+          <div id="addPriceFormContainer"></div> <!-- Add a placeholder div -->
+      </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 Smart Car Parking System. All rights reserved.</p>
+</footer>
+
+      
+</body>
+</html>

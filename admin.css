@@ -1,0 +1,338 @@
+/* Basic styles */
+body {
+  font-family: sans-serif;
+  background-color: #474747;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Navbar */
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+nav h1 {
+  margin: 0;
+  font-size: 1.5em;
+  margin-left: 10px;
+}
+
+#logoutBtn {
+  background-color: #18be26;
+  color: #fff;
+  border: none;
+  padding: 13px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+/* Grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.grid-item {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  text-align: center;
+  cursor: pointer; /* Indicate that the grid item is clickable */
+  transition: background-color 0.3s ease;
+}
+
+.grid-item h2 {
+  color: #201e1e;
+}
+
+.grid-item:hover {
+    background-color: #ccc;
+}
+
+/* Popup Styles */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(13, 13, 14, 0.945); /* Black w/ opacity */
+}
+
+.popup-content {
+  background-color: #333;
+  padding: 20px;
+  border: 1px solid #888;
+  position: relative;
+  min-width: 80%;
+  max-width: 95%;
+  margin: 10% auto;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(211, 50, 50);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Form Styles */
+form label {
+    display: block;
+    margin-bottom: 9px;
+    color: #fff; /*Label*/
+}
+
+form input[type="text"],
+form input[type="number"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color:white; /*Inputs*/
+    color: black;
+}
+
+form button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form button[type="submit"]:hover {
+    opacity: 0.6;
+}
+
+/* Table styling */
+.user-table,
+.location-table,
+.pricing-table,
+.parking-slot-table,
+.reservation-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: sans-serif;
+  color: white; /*Font*/
+}
+
+/*General Head */
+.user-table th,
+.location-table th,
+.pricing-table th,
+.parking-slot-table th,
+.reservation-table th{
+    background-color: #5e4e4e;
+}
+
+.user-table th,
+.user-table td,
+.location-table th,
+.location-table td,
+.pricing-table th,
+.pricing-table td,
+.parking-slot-table th,
+.parking-slot-table td,
+.reservation-table th,
+.reservation-table td{
+  border: 1px solid white;
+  padding: 10px;
+  text-align: left;
+}
+
+.user-table tbody tr:hover,
+.location-table tbody tr:hover,
+.pricing-table tbody tr:hover,
+.parking-slot-table tbody tr:hover,
+.reservation-table tbody tr:hover{
+  background-color: #555;
+}
+
+/* Style for special button */
+.delete-button,
+.edit-button,
+.save-button,
+.cancel-button{
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button:hover,
+.edit-button:hover,
+.save-button:hover,
+.cancel-button:hover{
+    background-color: #d32f2f;
+}
+
+/*Transition for a good UX */
+.popup {
+  transition: opacity 0.3s ease;
+}
+
+.popup.show {
+  opacity: 1;
+}
+
+#locationTableContainer {
+  overflow-x: auto; /* Add horizontal scroll if table is too wide */
+}
+
+/* Add Button Style */
+button#addLocationBtn,
+button#addPriceBtn,
+button#addParkingSlotBtn {
+  background-color: #2980b9; /* A nice blue color */
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 10px; /* Add some spacing below the button */
+  transition: background-color 0.3s ease;
+}
+
+button#addLocationBtn:hover,
+button#addPriceBtn:hover,
+button#addParkingSlotBtn:hover {
+  background-color: #3498db; /* A slightly lighter blue on hover */
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* ----- Media Queries for Responsiveness ----- */
+@media (max-width: 768px) {
+    /* General */
+    .container {
+        padding: 10px;
+        width: 95%;
+    }
+
+    /* Navbar */
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav h1 {
+        margin-bottom: 10px;
+    }
+
+    /*Logout */
+    #logoutBtn{
+        position: static; /* Remove fixed position */
+        margin-top: 10px; /* Add some spacing */
+        width: 100%; /*Full*/
+    }
+
+    /* Grid */
+    .grid-container {
+        grid-template-columns: 1fr; /* Stack grid items */
+    }
+
+    .grid-item {
+        padding: 15px; /*Less padding on small*/
+    }
+
+    /* Popup */
+    .popup-content {
+        width: 95%;
+        margin: 2% auto; /*Less margin for small*/
+    }
+
+    /*Table head*/
+    .user-table thead,
+    .location-table thead,
+    .pricing-table thead,
+    .parking-slot-table thead,
+    .reservation-table thead {
+        display: none; /*Hide the table head*/
+    }
+
+    .user-table tr,
+    .location-table tr,
+    .pricing-table tr,
+    .parking-slot-table tr,
+    .reservation-table tr {
+        display: block;
+        margin-bottom: 0.625em;
+        border: 1px solid #ddd;
+    }
+
+   /*Will have a specific title depending on the element*/
+    .user-table td,
+    .location-table td,
+    .pricing-table td,
+    .parking-slot-table td,
+    .reservation-table td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+    }
+
+   /*Set title on every element*/
+    .user-table td:before,
+    .location-table td:before,
+    .pricing-table td:before,
+    .parking-slot-table td:before,
+    .reservation-table td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #fff;
+        content: attr(data-column);
+    }
+}
+
+/* ---- Footer Style ---- */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}

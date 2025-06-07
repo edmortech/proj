@@ -1,0 +1,1451 @@
+/* Reset default styles (as before) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+main {
+    flex: 1;
+  }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    text-align: center;
+    color: white;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Navbar Styles (as before) */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between; /* Distribute space */
+    align-items: center; /* Vertically align items */
+    position: relative;
+    margin-bottom: 0%;
+}
+
+/* Hamburger Menu (as before) */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    z-index: 1000;
+}
+
+.hamburger div {
+    width: 30px;
+    height: 3px;
+    background-color: khaki;
+    margin: 5px 0;
+}
+
+/* Navbar Links (as before) */
+.navbar-links {
+    display: none; /* Initially hidden */
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: #333;
+    width: 200px;
+    text-align: left;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.navbar-links a {
+    display: block;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.navbar-links.active {
+    display: block;
+}
+
+/* Login Button (as before) */
+.login-button {
+    background-color: #28a745; /* Green color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Logout button (as before) */
+.logout-button {
+    background-color: #28a745; /* Green color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#admin-logout-button{
+    background-color: #28a745; /* Green color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Added Class for Right Alignment (as before) */
+.navbar > * {
+  order: 1;
+}
+.navbar > .hamburger {
+  order: 0;
+}
+.navbar > .login-button {
+    margin-left: auto;
+}
+
+/* System Header (as before) */
+.system-header {
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    display: block;
+    margin:-27px auto;
+    background-color: rgba(51, 51, 51, 0.4);
+    margin-bottom: auto;
+    position: relative;
+    z-index: 2;
+
+}
+
+.logo-container {
+    position: relative;
+    width: 100%;         /* Fill the width of the header */
+    height: 300px;
+
+}
+
+.logo-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire container */
+    z-index: 1;    /* Place behind the logo */
+}
+
+.system-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Search Bar (as before) */
+.search-bar {
+    margin-top: 20px;
+}
+
+
+
+/* Overlay (for login/registration form) - NO CHANGE */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* Slogan (as before) */
+.slogan {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Package Options (as before) */
+.package-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative; /* Needed for absolute positioning of the underline */
+    gap: opx;
+}
+
+.package-option {
+    padding: 12px 24px;
+    color: white; /* or any color you want*/
+    border-radius: 0px;
+    cursor: pointer;
+    background-color: #333; /* Dark background */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3 ease ; /* Smooth transition */
+    position: relative; /* Needed for relative positioning of the underline */
+    text-decoration: none; /* Remove the default underline */
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+/* Hover and Active Class for the Package Option (as before) */
+.package-option:hover,
+.package-option:focus {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2)
+
+}
+
+.package-option.active {
+    background-color: #007bff; /* Darker blue on hover and active */
+    color: gold; /* White text on hover and active */
+}
+
+.package-option.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;  /* Adjust for spacing */
+    left: 0;
+    width: 100%;
+    height: 2px;    /* Adjust underline thickness */
+    background-color: gold; /* Underline color */
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.package-option > i{
+    margin-right: 0.4em;  /*Space out icon from text */
+  }
+
+
+  /* Mobile-Specific Styles (as before) */
+  @media (max-width: 600px) {
+      .package-container {
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .package-option {
+          width: 80%;
+          margin: 5px 0;
+          text-align: center;
+      }
+  }
+
+  /* Search Bar (as before) */
+.search-bar {
+    margin-top: 20px;
+}
+
+/* Search container (as before) */
+.search-container {
+    position: relative; /* Needed for positioning suggestion box */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Table styling (as before) */
+.spot-result-table {
+    margin-top: 20px;
+    text-align: left;
+}
+
+#parking-spots-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #333;
+}
+
+#parking-spots-table th,
+#parking-spots-table td {
+    padding: 12px 15px;
+    border: 1px solid white;
+    text-align: left;
+    min-width: 100px; /* Ensures better layout control */
+}
+
+#parking-spots-table th {
+    background-color: #5e4e4e;
+    color: white;
+    font-weight: bold;
+}
+
+
+#parking-spots-table tbody tr:hover {
+    background-color: #5e4e4e;
+}
+
+/* Adjust action column width (as before) */
+#parking-spots-table td:last-child,
+#parking-spots-table th:last-child {
+    width: 15%;
+}
+
+/* Buttons (as before) */
+.reserve-button, .pay-button, #closePaymentPopup {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reserve-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.reserve-button:hover {
+    background-color: #218838;
+}
+
+/* Search Input (as before) */
+#search-input {
+    width: 60%;
+    max-width: 400px; /* Prevents it from stretching too wide */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Consistent with buttons */
+    margin-right: 10px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Payment Popup (General Styles) */
+.payment-method-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 8px;
+    text-align: center;
+    width: 90%;
+    max-width: 90%;
+    display: none; /* IMPORTANT: Hidden by default */
+    border-collapse: collapse;
+
+}
+.payment-method-popup h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #eee;
+}
+
+.payment-methods {
+    overflow-x: auto;
+    overflow-y: auto;
+}
+.payment-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    color: white;  /* White text for visibility on dark background */
+}
+
+
+.payment-table thead th {
+    background-color: #5e4e4e;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #666;
+    
+}
+
+.payment-table thead .hidden-header {
+    display: none;
+}
+
+.payment-table td {
+    padding: 10px;
+    border: 1px solid white;  /* Subtle cell separation */
+}
+.payment-method-popup th,
+.payment-method-popup td{
+  border: 1px solid white;
+  padding: 10px;
+  text-align: left;
+  
+}
+
+.pay-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.pay-button:hover {
+    background-color: #45a049;
+}
+#closeParkingPopup {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: block;  /* Ensure it takes full width */
+    margin: 0 auto;   /* Center horizontally */
+    width: fit-content; /* Adjust width to content */
+}
+
+#closeParkingPopup:hover {
+    background-color: #d32f2f;
+}
+
+
+#closePaymentPopup {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: block;  /* Ensure it takes full width */
+    margin: 0 auto;   /* Center horizontally */
+    width: fit-content; /* Adjust width to content */
+}
+
+#closePaymentPopup:hover {
+    background-color: #d32f2f;
+}
+
+
+
+/*This is what makes the popup visible*/
+.payment-method-popup.show {
+    display: block; /* Or flex, grid, depending on your layout */
+}
+
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+@media (max-width: 600px) {
+    /*Hide the header row by hiding thead*/
+    .payment-table thead {
+        display: none;
+    }
+
+    /*Set every row to be displayed like a block*/
+    .payment-table tbody tr {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .payment-table td {
+         /*All cell should also follow */
+        display: block;
+        border-bottom: none;
+        padding-left: 130px;
+        position: relative;
+        min-height: 35px;
+        text-align: left;
+    }
+
+    .payment-table td::before {
+        /*Change title and place it on top of each data cell*/
+        content: attr(data-column);
+        position: absolute;
+        left: 0;
+        width: 120px;
+        padding-left: 10px;
+        font-weight: bold;
+        top: 2px;
+        font-size: 13px;
+    }
+}
+
+/* Rest of your CSS (unchanged) */
+
+/* --- "Pay" Button Styling --- */
+.pay-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.pay-button:hover {
+    background-color: #45a049;
+}
+
+/* --- Close Button Styling --- */
+#closePaymentPopup {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: block;  /* Ensure it takes full width */
+    margin: 0 auto;   /* Center horizontally */
+    width: fit-content; /* Adjust width to content */
+}
+
+#closePaymentPopup:hover {
+    background-color: #d32f2f;
+}
+
+.payment-option {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    color: #333;
+}
+
+.payment-option:hover {
+    background-color: #e0e0e0;
+}
+
+.payment-option i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+#closePaymentPopup {
+    background-color: #dc3545;
+    color: white;
+    width: auto;
+    margin-top: 15px;
+}
+
+#closePaymentPopup:hover {
+    background-color: #c82333;
+}
+.paymentmMethodPopup{
+    z-index: 12000;
+}
+
+/* Overlay (for payment/parking popups) */
+.popup-overlay {
+    display: none;  /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1100o; /* Higher than .overlay */
+}
+
+/*This is what makes the popup visible*/
+.popup-overlay.show {
+    display: block;
+}
+
+#overlay {
+    /* ... other styles ... */
+    z-index: 1000; /* Ensure it's above the page content */
+}
+
+
+#registerBtn:active {
+    color: gold;
+}
+
+
+
+
+
+/* Find Parking Spot Button */
+.find-parking-spot-button {
+    width: 40%;         /* Match the width of the input */
+    padding: 10px;
+    border: 1px solid #ccc; /* Match the border */
+    border-radius: 15px;    /* Match the border radius */
+    margin-top: 10px;      /* Add some spacing */
+    font-size: 16px;        /* Match the font size */
+    background-color: #5337b6;  /* Green background */
+    color: white;             /* White text */
+    cursor: pointer;
+}
+
+.find-parking-spot-button:hover {
+    background-color: #3d18a1; /* Darker green on hover */
+}
+
+/* Styles for the pop-up overlay */
+
+/* Basic CSS for the pop-ups */
+.popup-container {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333; /* Changed background color to #333 */
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1001; /* Ensure it's on top */
+  width: 80%;
+  max-width: 600px;
+  color: white; /* Set default text color to white for better readability */
+}
+
+/* Style for the hamburger menu (very basic) */
+#hamburger-menu {
+  margin-bottom: 20px;
+}
+
+/* Add these to your existing <style> block */
+.popup-container table {
+    width: 100%;
+    border-collapse: collapse; /* Remove space between table cells */
+    margin-bottom: 10px; /* Spacing below the table */
+  }
+
+  .popup-container th, .popup-container td {
+    border: 1px solid #ddd; /* Light gray border */
+    padding: 8px;
+    text-align: left;
+    color: white; /* Ensure text in tables is also white */
+  }
+
+  .popup-container th {
+    background-color: #444; /* Slightly lighter header, adjust if needed */
+    font-weight: bold;
+    color: white;
+  }
+
+  
+
+
+#addPaymentMethodForm {
+    width: 300px; /* Adjust width as needed */
+    margin: 20px auto; /* Center the form */
+    padding: 20px;
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+#addPaymentMethodForm label {
+    display: block; /* Labels on their own line */
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#addPaymentMethodForm input[type="text"],
+#addPaymentMethodForm select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    font-size: 14px;
+}
+
+#addPaymentMethodForm button[type="submit"] {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+#addPaymentMethodForm button[type="submit"]:hover {
+    background-color: #3e8e41; /* Darker green on hover */
+}
+
+#paymentMethodsContainer p {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+
+
+
+
+
+
+
+/*dashboard pops*/
+.dashboard-section {
+    display: none;
+}
+.show {
+    display: block;
+}
+
+
+/* Styles for bookings */
+/* Basic table styling */
+#active-booking-details {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+  }
+  
+  #active-booking-details th,
+  #active-booking-details td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  #active-booking-details th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  /* Optional: Add zebra striping */
+  #active-booking-details tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Optional: Hover effect on rows */
+  #active-booking-details tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* Style the "Cancel" button */
+  .cancel-booking-btn {
+    background-color: #f44336; /* Red background */
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .cancel-booking-btn:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+  }
+
+  /* Basic table styling */
+/* ----- Payment Method Section Styles ----- */
+#payment-methods-section {
+    padding: 20px;
+    background-color: #444; /* Darker background for the section */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#payment-methods-section h2 {
+    color: #eee;
+    margin-bottom: 15px;
+    text-align: left; /* Added to align heading */
+}
+
+#payment-methods-section button {
+    background-color: #28a745; /* Green color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#payment-methods-section button:hover {
+    background-color: #1e7e34; /* Darker green on hover */
+}
+
+/* -- Added style to buttons, like add-payment-method-btn for better use -*/
+#add-payment-method-btn,
+#addPaymentMethodButton {
+    background-color: #28a745; /* Green color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+    width: auto; /* Adjust width to content */
+    display: inline-block; /*Allow to be on single*/
+}
+
+#add-payment-method-btn:hover,
+#addPaymentMethodButton:hover {
+    background-color: #1e7e34; /* Darker green on hover */
+}
+
+#payment-methods-list {
+    margin-top: 10px;
+}
+
+/* Style for the table containing payment methods */
+.payment-methods-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    color: white; /* Match the text color to the rest of the section */
+}
+
+.payment-methods-table th,
+.payment-methods-table td {
+    border: 1px solid #555; /* Darker border for better definition */
+    padding: 8px;
+    text-align: left;
+}
+
+.payment-methods-table th {
+    background-color: #444; /* A slightly lighter background for headers */
+    font-weight: bold;
+    text-transform: uppercase; /* Optional: To give the headers more emphasis */
+}
+
+/* Style for table cells */
+.payment-methods-table td {
+    padding: 8px;          /* Consistent cell padding */
+    font-size: 0.9em;       /* Readable font size */
+    vertical-align: middle; /* Center text vertically */
+}
+
+/* Popup Styles */
+#add-payment-method-popup {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#add-payment-method-popup label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc; /* Lighter color for the labels */
+    text-align: left; /*Added property to aling labels properly */
+}
+
+#add-payment-method-popup select,
+#add-payment-method-popup input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #777;
+    border-radius: 4px;
+    background-color: #555;
+    color: white; /* Input Color*/
+    box-sizing: border-box;
+}
+
+#add-payment-method-popup button[type="submit"] {
+    background-color: #28a745; /* Green for add */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#add-payment-method-popup button[type="submit"]:hover {
+    background-color: #1e7e34; /* Darker green on hover */
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ccc;
+    background: none;      /* Remove background color */
+    border: none;          /* Remove border */
+    padding: 0;
+}
+
+.close-btn:hover {
+    color: #f00;
+}
+
+
+  /*add paymethod*/
+  /* ... (your existing CSS rules) ... */
+
+/* Popup container */
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #dddddd;
+    padding: 20px;
+    background-color: #333;
+    z-index: 99909;
+    width: 500px;
+    opacity: 0.8;
+  }
+  
+  /* Popup content */
+  .popup-content {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    
+    
+  }
+  
+  /* Close button */
+  .close-btn {
+    position: relative;
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  /* Overlay */
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1; /* Ensure overlay is below popup */
+  }
+
+ /* ----- Profile Section Styles ----- */
+#profile-section {
+    padding: 20px;
+    background-color: #444; /* Darker background for better contrast */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+#profile-section h2 {
+    color: #eee;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ccc; /*Lighter color for the labels */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #777;
+    border-radius: 4px;
+    background-color: #555; /* Background for inputs */
+    color: white;            /* Text color for inputs */
+    box-sizing: border-box;
+}
+
+/* Disable readonly input styling */
+.form-group input[readonly] {
+  cursor: not-allowed;
+  opacity: 0.7; /* Visually indicate it's disabled */
+}
+
+/*Edit Profile */
+#editProfileButton{
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/*Edit Profile hover*/
+#editProfileButton:hover {
+    background-color: #1e7e34;
+}
+
+
+
+  #how-it-works-section {
+    padding: 20px;
+    text-align: center; /* Center the content */
+  }
+  
+  #how-it-works-section h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  #how-it-works-section p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: gold;
+    
+  }
+  
+  #how-it-works-section ol {
+    display: inline-block;
+    text-align: left; /* Align list items to the left */
+    margin-bottom: 1.5rem;
+  }
+  
+  #how-it-works-section li {
+    margin-bottom: 0.5rem;
+    
+  }
+  
+  #how-it-works-section strong {
+    font-weight: bold;
+  }
+
+  /*contacts*/
+  .customer-photo img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.contact{
+    padding: 5rem 0;
+    background: rgb(226, 226, 226);
+}
+
+.contact-container{
+    display: flex;
+    background: #fff;
+}
+
+.contact-image{
+    width: 50%;
+}
+
+.contact-image img{
+    display: block;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+}
+
+.form-container{
+    padding: 1rem;
+    width: 50%;
+    margin: auto;
+    background-color: #333;
+}
+
+.form-container input{
+display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #d6c4c4;
+    padding: 1rem 0;
+    box-shadow: none;
+    outline: none;
+    margin-bottom: 1rem;
+    color: #444;
+    font-weight: 500;
+}
+
+.form-container textarea{
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    padding: 1rem 0;
+}
+
+.close-section-btn {
+    position: relative; /* Allow positioning within the section */
+    float: right; /* Align the button to the right */
+    top: 10px; /* Adjust top position as needed */
+    right: 10px; /* Adjust right position as needed */
+    background-color: transparent; /* Transparent background */
+    border: none; /* No border */
+    font-size: 20px; /* Adjust font size as needed */
+    cursor: pointer; /* Indicate that it's clickable */
+  }
+  /* style.css */
+
+/* General Table Styles for Reservation Management Look */
+/* Popup Styles (unchanged from previous response) */
+/* Popup Styles (unchanged from previous response) */
+#bookings-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1002;
+    display: none;
+}
+
+#bookings-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    padding: 20px;
+    border: 1px solid #888;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1003;
+    display: none;
+    min-width: 80%;
+    min-height: auto;
+    max-width: 95%;
+    max-height: 80%;
+    overflow: auto;
+}
+
+#bookings-popup.visible, #bookings-popup-overlay.visible {
+    display: block;
+}
+
+/* Table Styles (Matching Image) */
+#bookings-content {
+    padding: 20px;
+    overflow-x: auto;
+
+    
+
+}
+
+.reservation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: white;
+    margin-top: 25px;
+}
+
+.reservation-table th,
+.reservation-table td {
+    border: 1px solid white;
+    padding: 10px;
+    text-align: left;
+    color: white;
+}
+
+.reservation-table th {
+    background-color: #5e4e4e;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.reservation-table tbody tr:hover{
+    background-color: #555;
+  }
+
+/* Cancel Button Styling (Matching Image) */
+.cancel-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.cancel-button:hover{
+    background-color: #d32f2f;
+}
+
+/* Responsive Design (MOBILE FIRST APPROACH)*/
+@media (max-width: 600px) {
+    .reservation-table thead {
+        display: none;  /* Hide the header row on small screens */
+    }
+
+    .reservation-table tr {
+        display: block;
+        margin-bottom: 0.625em;
+        border: 1px solid #ddd;
+    }
+
+    .reservation-table td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    .reservation-table td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        /*color: #fff; Removed color - the contrast was bad with the background */
+        content: attr(data-label);
+    }
+
+}
+
+/*profile pop*/
+#profile-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    display: none;
+    min-width: 400px;
+    min-height: 300px;
+    width: 900px;
+    max-width: 1000px;
+}
+
+#profile-popup.visible, #profile-popup-overlay.visible {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+#profile-popup input::placeholder { /* ADDED THIS BLOCK */
+    color:white;
+    background-color: white;
+    opacity: 1;
+}
+
+#profile-popup input {
+    color: black;             /* Makes the user-entered text black */
+    background-color: white;   /* Ensures a white background */
+}
+
+#profile-popup input:read-only {
+    color: black;             /* Ensures text is black when disabled */
+    opacity: 1;               /* Prevent the text from becoming too faded */
+
+}
+.close-section-btn {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+     background: none; /* remove the default grey background */
+    border: none; /* remove the border */
+    font-size: 1.5em; /* set font size */
+    line-height: 1; /* remove additional line-height */
+}
+.close-section-btn:hover{
+    color: #d32f2f;
+}
+/*p. method pop*/
+/* Popup Styles (unchanged from previous response) */
+#payment-methods-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1002;
+    display: none;
+}
+
+#payment-methods-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    padding: 20px;
+    border: 1px solid #888;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1003;
+    display: none;
+    min-width: 80%;
+    min-height: 400px;
+    max-width: 95%;
+    max-height: 80%;
+    overflow: auto;
+    color: white;
+}
+
+#payment-methods-popup.visible, #payment-methods-popup-overlay.visible {
+    display: block;
+}
+
+/* Table Styles (Matching Image) */
+#payment-methods-list {
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.payment-methods-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: white;
+}
+
+.payment-methods-table th,
+.payment-methods-table td {
+    border: 1px solid white;
+    padding: 10px;
+    text-align: left;
+    color: white;
+}
+
+.payment-methods-table th {
+    background-color: #5e4e4e;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.payment-methods-table tbody tr:hover {
+    background-color: #555;
+}
+
+/* Button Styling (Matching Image) */
+.edit-payment-btn,
+.delete-payment-btn {
+    background-color: #f44336; /* Red */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.edit-payment-btn:hover,
+.delete-payment-btn:hover {
+    background-color: #d32f2f; /* Darker Red */
+}
+/*Add Payment Method button*/
+#add-payment-method-btn{
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#add-payment-method-btn:hover{
+     background-color: #45a049; /* Darker Green */
+}
+/* Responsive Design (MOBILE FIRST APPROACH)*/
+@media (max-width: 600px) {
+    .payment-methods-table thead {
+        display: none;  /* Hide the header row on small screens */
+    }
+
+    .payment-methods-table tr {
+        display: block;
+        margin-bottom: 0.625em;
+        border: 1px solid #ddd;
+    }
+
+    .payment-methods-table td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    .payment-methods-table td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #fff; /* Match the design - make label white */
+        content: attr(data-column);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

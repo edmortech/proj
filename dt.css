@@ -1,0 +1,394 @@
+/* --- START: Updated CSS for Date/Time Picker (Use in project.css) --- */
+
+/* Styles for the container holding the label and the picker */
+.datetime-container {
+    position: relative; /* Needed for absolute positioning of the picker */
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 450px; /* Slightly wider max-width for label */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 10px; /* Add padding for small screens */
+    box-sizing: border-box;
+}
+
+/* Styles for the visible label that triggers the picker */
+.datetime-label {
+    width: 100%;
+    padding: 12px 15px; /* Increased padding */
+    border: 1px solid #ccc;
+    border-radius: 18px; /* Slightly more rounded */
+    font-size: 17px; /* Slightly larger font */
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    line-height: 1.4; /* Ensure multi-line text looks okay */
+}
+
+/* Styles for icons within the label */
+.datetime-label .calendar-icon {
+    margin-right: 8px; /* More space */
+}
+
+.datetime-label .dropdown-icon {
+    margin-left: 8px; /* More space */
+}
+
+/* Styles for the main picker popup */
+.datetime-picker {
+    position: absolute;
+    /* top/bottom positioning handled by .picker-above / .picker-below */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%; /* Responsive width */
+    max-width: 500px; /* Increased max-width for bigger picker */
+    background-color: #333;
+    border: 1px solid #ccc;
+    border-radius: 18px; /* Match label */
+    padding: 15px; /* Increased padding */
+    z-index: 10;
+    display: none; /* Controlled by JS */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    box-sizing: border-box;
+}
+
+/* == Dynamic Positioning Classes (Toggled by JavaScript) == */
+.datetime-picker.picker-below {
+    top: calc(100% + 5px); /* Position below the label */
+    bottom: auto;
+    transform-origin: top center; /* For potential animations */
+}
+
+.datetime-picker.picker-above {
+    bottom: calc(100% + 5px); /* Position above the label */
+    top: auto;
+    transform-origin: bottom center; /* For potential animations */
+}
+/* ========================================================= */
+
+
+/* Styles for the picker header */
+.datetime-picker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px; /* More horizontal padding */
+    margin-bottom: 15px; /* More space below header */
+}
+
+.datetime-picker-header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.4em; /* Larger arrows */
+    color: #555;
+    padding: 5px 10px;
+}
+
+.datetime-picker-header span {
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em; /* Slightly larger month/year */
+}
+
+/* Styles for the content area (calendar + time) */
+.datetime-content {
+    display: flex;
+    gap: 20px; /* Increased space */
+}
+
+/* Styles for the calendar grid */
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 2px; /* Increased space */
+    flex-grow: 1;
+}
+
+.calendar .day-name {
+    padding: 8px 0; /* More padding */
+    font-weight: bold;
+    color: #fff; /* White text (LOW CONTRAST) */
+    font-size: 0.9em; /* Slightly larger */
+}
+
+.calendar .day {
+    padding: 0; /* Remove padding, use flexbox for centering */
+    cursor: pointer;
+    color: #fff; /* White text (LOW CONTRAST) */
+    border-radius: 8px; /* More rounded */
+    height: 36px; /* Taller cells */
+    line-height: 36px; /* Match height for vertical center (fallback) */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em; /* Larger date numbers */
+    min-width: 36px; /* Ensure minimum width */
+}
+
+.calendar .day.inactive {
+    color: #D3D3D3 !important;
+    cursor: not-allowed;
+    background-color: transparent !important;
+}
+
+.calendar .day.start-date,
+.calendar .day.end-date {
+    background-color: #000;
+    color: white !important;
+    border-radius: 50%; /* Keep circular */
+    font-weight: bold;
+    /* Use width/height matching .day height for circle */
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+}
+
+.calendar .day.in-range {
+    background-color: #9c9090;
+    color: white !important;
+    border-radius: 0;
+}
+
+.calendar .day.start-date.in-range {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 50%; /* Keep outer edge round */
+    border-bottom-left-radius: 50%;
+}
+
+.calendar .day.end-date.in-range {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 50%; /* Keep outer edge round */
+    border-bottom-right-radius: 50%;
+}
+/* Special case: start and end date are the same */
+.calendar .day.start-date.end-date {
+    border-radius: 50% !important; /* Ensure it's a circle */
+}
+
+
+.calendar .day:not(.inactive):not(.start-date):not(.end-date):not(.in-range):hover {
+    background-color: #ddd;
+    color: #333 !important;
+}
+
+
+/* Styles for the time input section */
+.time-inputs {
+    width: 140px; /* Wider time section */
+    padding-left: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* More space */
+    justify-content: center;
+}
+
+.time-input-group label {
+    display: block;
+    margin-bottom: 8px; /* More space */
+    color: #fff; /* White text (LOW CONTRAST) */
+    font-size: 1em; /* Larger label */
+}
+
+.time-select {
+    position: relative;
+    display: block;
+}
+
+.time-input {
+    padding: 10px; /* More padding */
+    border: 1px solid #ccc;
+    border-radius: 6px; /* More rounded */
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    color: #333;
+    box-sizing: border-box;
+    font-size: 1em; /* Larger text */
+}
+
+.time-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Match input */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 11;
+    display: none;
+    max-height: 160px; /* Slightly taller */
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.time-options button {
+    display: block;
+    width: 100%;
+    padding: 8px; /* More padding */
+    text-align: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    font-size: 0.95em; /* Slightly larger */
+}
+
+.time-options button:hover {
+    background-color: #f0f0f0;
+}
+
+.time-options button:last-child {
+    border-bottom: none;
+}
+
+.time-options.show {
+    display: block;
+}
+
+#datetime-submit {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 25px; /* Bigger button */
+    border-radius: 8px; /* More rounded */
+    cursor: pointer;
+    margin-top: 20px; /* More space above */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    font-size: 1em; /* Larger text */
+}
+
+#datetime-submit:hover {
+    background-color: #218838;
+}
+
+
+/* --- Responsiveness --- */
+
+/* Target smaller screens (e.g., tablets and phones) */
+@media (max-width: 768px) {
+    .datetime-picker {
+        max-width: 450px; /* Allow it to be slightly smaller */
+        padding: 12px;
+    }
+
+    .datetime-content {
+        gap: 15px;
+    }
+
+    .calendar .day {
+        height: 34px;
+        line-height: 34px;
+        min-width: 34px;
+        font-size: 0.95em;
+    }
+     .calendar .day.start-date,
+     .calendar .day.end-date {
+        width: 34px;
+        height: 34px;
+        line-height: 34px;
+     }
+
+
+    .time-inputs {
+        width: 120px; /* Slightly narrower */
+    }
+
+     .time-input {
+        padding: 9px;
+        font-size: 0.95em;
+     }
+
+     .time-options button {
+        padding: 7px;
+        font-size: 0.9em;
+     }
+
+     #datetime-submit {
+         padding: 11px 22px;
+         font-size: 0.95em;
+     }
+}
+
+
+/* Target small mobile screens */
+@media (max-width: 500px) {
+     .datetime-container {
+         max-width: none; /* Allow full use of width */
+         padding: 0 5px; /* Reduce padding */
+     }
+
+    .datetime-picker {
+        width: 98%; /* Take almost full width */
+        max-width: none;
+        padding: 10px;
+        border-radius: 15px;
+    }
+
+    .datetime-content {
+        flex-direction: column; /* Stack calendar and time inputs */
+        gap: 15px;
+        align-items: center; /* Center items when stacked */
+    }
+
+    .calendar {
+        width: 100%; /* Take full width */
+        gap: 2px;
+    }
+
+    .calendar .day {
+        height: 32px;
+        line-height: 32px;
+        min-width: 32px;
+        font-size: 0.9em;
+        border-radius: 6px;
+    }
+     .calendar .day.start-date,
+     .calendar .day.end-date {
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+     }
+
+    .time-inputs {
+        width: 90%; /* Take most of the width when stacked */
+        padding-left: 0; /* No need for left padding */
+        align-items: stretch; /* Make items fill width */
+    }
+
+    .time-input-group label {
+        text-align: center; /* Center labels */
+    }
+
+    .datetime-picker-header span {
+        font-size: 1em;
+    }
+     .datetime-picker-header button {
+         font-size: 1.2em;
+     }
+
+     #datetime-submit {
+         padding: 10px 20px;
+         font-size: 0.9em;
+         margin-top: 15px;
+     }
+}
+
+/* --- END: Updated CSS --- */

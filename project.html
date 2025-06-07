@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edpark</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="log-reg.css">
+    <link rel="stylesheet" href="dt.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="navbar.js" defer></script>
+    <script type="module" src="log-reg.js" defer></script>
+    <script src="shared.js" defer></script>
+    <script src="date.js" defer></script>
+    <script type="module" src="searchf.js"></script>
+    <script src="serveriip.js" defer></script>
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <button class="hamburger" aria-label="Toggle Navigation" onclick="toggleNavbar()">
+            <div></div><div></div><div></div>
+        </button>
+        <div class="navbar-links"></div>
+        <div class="navbar-buttons"></div>
+    </nav>
+
+    <div class="auth-container-page">
+        <!-- Login Section -->
+        <div id="login-section" class="auth-section">
+            <h2>Welcome Back!</h2>
+            <p>Please log in to access your parking dashboard.</p>
+            <form id="loginForm" novalidate>
+                <div class="formgroup">
+                    <label for="userInput">Username or Email:</label>
+                    <input type="text" id="userInput" name="userInput" required placeholder="Enter username or email">
+                </div>
+                <div class="formgroup">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter password">
+                </div>
+                <div id="login-register-message" class="form-message"></div>
+                <button id="login-Btn" type="submit" class="auth-button">Login</button>
+
+                <div class="social-login-options">
+                    <p class="separator"><span>OR</span></p>
+                    <a href="mainV3/project.html/auth/google" class="social-button google-button">
+                        <img src="system images\google-icon-logo-svgrepo-com.svg" alt="Google logo" /> Sign in with Google
+                    </a>
+                    <a href="mainV3/project.html/auth/apple" class="social-button apple-button">
+                        
+                        <img src="system images\apple-logo-svgrepo-com.svg" alt="Apple logo" /> Sign in with Apple
+                    </a>
+                    <a href="mainV3/project.html/auth/facebook" class="social-button facebook-button">
+                        <img src="system images\facebook-3-logo-svgrepo-com.svg" alt="Facebook logo" /> Sign in with Facebook
+                    </a>
+                </div>
+                <p class="form-switch">
+                    Don't have an account? <a href="#register" class="route-link">Register here</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- Registration Section -->
+                <!-- Registration Section -->
+                <div id="register-section" class="auth-section">
+                    <h2>Create Your Account</h2>
+                    <p>Join Edpark for seamless parking solutions.</p>
+                    <form id="registerForm" novalidate>
+        
+                        <div class="formgroup">
+                            <label for="register-username">Username:</label>
+                            <input type="text" id="register-username" name="username" required placeholder="Enter username">
+                            <span id="register-username-error" class="error-message"></span>
+                        </div>
+        
+                        <div class="formgroup">
+                            <label for="register-fullName">Full Names:</label>
+                            <input type="text" id="register-fullName" name="fullName" required placeholder="Enter Full Name">
+                        </div>
+        
+                        <div class="formgroup">
+                            <label for="register-email">Email:</label>
+                            <input type="email" id="register-email" name="email" required placeholder="Enter email">
+                        </div>
+        
+                        <div class="formgroup">
+                            <label for="register-phoneNumber">Phone Number:</label>
+                            <input type="tel" id="register-phoneNumber" name="phoneNumber" required placeholder="Enter Phone Number" maxlength="10">
+                            <span id="register-phoneNumber-error" class="error-message"></span>
+                        </div>
+        
+                        <div class="formgroup">
+                            <label for="register-password">Password:</label>
+                            <input type="password" id="register-password" name="password" required placeholder="Enter password">
+                        </div>
+        
+                        <div class="formgroup">
+                            <label for="register-confirmPassword">Confirm Password:</label>
+                            <input type="password" id="register-confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+                            <span id="register-confirmPassword-error" class="error-message"></span>
+                        </div>
+        
+                        <div id="register-message" class="form-message"></div>
+        
+                        <button type="submit" class="auth-button">Create Account</button>
+                        <p class="form-switch">
+                            Already have an account?
+                            <a href="#login" class="route-link">Login here</a>
+                        </p>
+        
+                         <div class="social-login-options">
+                             <p class="separator"><span>OR</span></p>
+                              
+                         </div>
+        
+                         <div class="social-login-options">
+                            <a href="mainV3/project.html/auth/google" class="social-button google-button">
+                               
+                                <img src="system images\google-icon-logo-svgrepo-com.svg" alt="Google logo" /> Sign up with Google
+                            </a>
+        
+                      
+                       <a href="mainV3/project.html/auth/apple" class="social-button apple-button">
+                           <img src="system images\apple-logo-svgrepo-com.svg" alt="Apple logo" /> Sign up with Apple
+                       </a>
+                            <a href="mainV3/project.html/auth/facebook" class="social-button facebook-button">
+                               
+                                <img src="system images\facebook-3-logo-svgrepo-com.svg" alt="Facebook logo" /> Sign up with Facebook
+                            </a>
+                            
+                        </div>
+                    </form>
+                </div>
+              
+               
+            </form>
+        </div>
+    </div>
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Other Page Content -->
+    <div id="shared-content-container"></div>
+    <div class="package-container">
+        <div class="package-option" data-package="hourly">Hourly</div>
+        <div class="package-option" data-package="monthly">Monthly</div>
+    </div>
+
+    <section class="search-bar">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Where are you going?" autocomplete="off">
+            <div id="suggestion-box" class="suggestion-box"></div>
+        </div>
+
+        <!-- Date/Time Picker -->
+        <div class="datetime-container">
+            <label for="datetime-input" class="datetime-label">
+                <i class="calendar-icon">📅</i>
+                <span id="datetime-placeholder">When do you need to park?</span>
+                <i class="dropdown-icon"></i>
+            </label>
+            <div id="datetime-picker" class="datetime-picker">
+                <div class="datetime-picker-header">
+                    <button id="prev-month"><</button>
+                    <span id="current-month-year">February 2025</span>
+                    <button id="next-month">></button>
+                </div>
+                <div class="datetime-content">
+                    <div id="calendar" class="calendar">
+                        <!-- Calendar grid will be generated here -->
+                    </div>
+                    <!-- Custom Time Picker (Scrollable) -->
+                    <div class="time-inputs">
+                        <div class="time-input-group">
+                            <label for="enter-after">Enter After:</label>
+                            <div class="time-select">
+                                <input type="text" id="enter-after" class="time-input" readonly placeholder="Select Time">
+                                <div class="time-options" id="enter-after-options">
+                                    <!-- Time options will be generated here -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="time-input-group">
+                            <label for="exit-before">Exit Before:</label>
+                            <div class="time-select">
+                                <input type="text" id="exit-before" class="time-input" readonly placeholder="Select Time">
+                                <div class="time-options" id="exit-before-options">
+                                    <!-- Time options will be generated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="datetime-submit">Submit</button>
+            </div>
+        </div>
+
+        <button id="find-parking-spot" class="find-parking-spot-button">Find Parking Spot</button>
+
+    </section>
+
+
+    <div id="parkingSpotPopup" class="payment-method-popup" style="display: none;" >
+        <h3>Available Parking Spots</h3>
+        <table id="parking-spots-table">
+            <thead>
+                <tr>
+                    <th>Lot No.</th>
+                    <th>Location</th>
+                    <th>Total Cost</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Parking spots will be inserted dynamically -->
+            </tbody>
+        </table>
+        <button id="closeParkingPopup">Close</button>
+    </div>
+    <!-- Payment Method Popup -->
+    <div id="paymentMethodPopup" class="payment-method-popup"  >
+        <h3>Select Payment Method</h3>
+        <div id="paymentMethodsContainer" class="payment-methods">
+            <!-- Payment methods will be dynamically inserted here -->
+        </div>
+        <button id="closePaymentPopup">Close</button>
+    </div>
+
+<!-- Overlay (for closing when clicking outside) -->
+<div class="popup-overlay" id="paymentOverlay"></div>
+
+<section id="how-it-works-section">
+    <h2>How Edpark Works</h2>
+    <p>Edpark is a smart parking system that simplifies finding and paying for parking.</p>
+  
+    <ol>
+      <li>
+        <strong>Find a spot:</strong> Use the app or website to see available spots in real-time, filtered by your preferences.
+      </li>
+      <li>
+        <strong>Reserve your space:</strong> Book your spot in advance and pay securely through the app.
+      </li>
+      <li>
+        <strong>Easy entry and exit:</strong> License plate recognition technology allows for seamless entry and exit.
+      </li>
+      <li>
+        <strong>Automated payments:</strong> Your parking session is tracked, and your payment method is automatically charged.
+      </li>
+      <li>
+        <strong>Smart features:</strong> Benefit from real-time availability, dynamic pricing, navigation, reminders, and a "find my car" feature.
+      </li>
+    </ol>
+  
+    <p>Edpark makes parking hassle-free, wherever you go.</p>
+  </section>
+</body>
+
+<footer class="site-footer">
+    <div class="footer-container container">
+        <div class="footer-column about">
+            <h4>About Edpark</h4>
+            <!-- Optional: Add your logo here -->
+            <!-- <img src="system images/logo2.design.png" alt="Edpark Logo" class="footer-logo"> -->
+            <p>Simplifying your parking experience with smart, efficient, and user-friendly solutions. Find, reserve, and pay for parking seamlessly.</p>
+        </div>
+
+        <div class="footer-column links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#how-it-works-section">How It Works</a></li>
+                <li><a href="#">Find Parking</a></li>
+                <li><a href="#">My Account</a></li> <!-- Link to dashboard if logged in -->
+                <li><a href="#">Help & Support</a></li>
+            </ul>
+        </div>
+
+        
+        <div class="footer-column contact-info">
+            <h4>Contact Us</h4>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> 123 Parking Lane, Tech City</li>
+                <li><i class="fas fa-phone"></i> <a href="tel:+1234567890">+254 (112) 870-066</a></li>
+                <li><i class="fas fa-phone"></i> <a href="tel:+1234567890">+254 (752) 254-216</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:support@edpark.com">support@edpark.com</a></li> 
+                <li>
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/+254112870066" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+                </li>
+                <!-- === END OF ADDED LINE === -->
+            </ul>
+        </div>
+        <div class="footer-column social">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <!-- Optional: Newsletter Signup -->
+            <!--
+            <h4>Newsletter</h4>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
+            -->
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© <span id="current-year"></span> Edpark Parking Solutions. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+</footer>
+<!-- ========================= END FOOTER ========================= -->
+
+<!-- Add Font Awesome for Icons (Optional but recommended for icons used above) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<script>
+    // Simple script to update the year automatically
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+</html>
